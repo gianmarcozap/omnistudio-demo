@@ -10,9 +10,6 @@ import {
   Trash2, 
   Upload, 
   CheckCircle2,
-  Sliders,
-  Expand,
-  Eye,
   ChevronUp,
   ChevronDown
 } from 'lucide-react';
@@ -181,7 +178,7 @@ export const StudioStation: React.FC = () => {
   const capturedCount = Object.values(currentForm.photos).filter(Boolean).length;
 
   return (
-    <div className="bg-white rounded-xl border border-slate-200/90 shadow-sm p-4 space-y-3.5 select-none">
+    <div className="bg-white rounded-xl border border-slate-200/90 shadow-sm p-4 space-y-3 select-none">
       
       {/* Top Header */}
       <div className="flex items-center justify-between pb-2 border-b border-slate-100">
@@ -245,7 +242,7 @@ export const StudioStation: React.FC = () => {
           </div>
 
           {/* Viewfinder Display */}
-          <div className="relative h-48 bg-slate-950 rounded-lg overflow-hidden border border-slate-800 flex items-center justify-center group">
+          <div className="relative h-44 sm:h-48 bg-slate-950 rounded-lg overflow-hidden border border-slate-800 flex items-center justify-center group">
             
             {/* Real Video */}
             <video
@@ -290,7 +287,7 @@ export const StudioStation: React.FC = () => {
             )}
 
             {/* Viewfinder Overlays & Crosshairs */}
-            <div className="absolute inset-0 pointer-events-none z-10 flex flex-col justify-between p-2.5 bg-crosshair-pattern">
+            <div className="absolute inset-0 pointer-events-none z-10 flex flex-col justify-between p-2 bg-crosshair-pattern">
               <div className="flex items-center justify-between text-[10px] font-mono text-white/80 drop-shadow">
                 <div className="flex items-center gap-1.5 bg-black/40 backdrop-blur-xs px-1.5 py-0.5 rounded border border-white/10">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
@@ -375,7 +372,7 @@ export const StudioStation: React.FC = () => {
           </span>
         </div>
 
-        {/* 2x2 Grid with Compact Aspect Ratio */}
+        {/* 2x2 Grid with Compact Height */}
         <div className="grid grid-cols-2 gap-2">
           {ANGLES_CONFIG.map((slot) => {
             const photoUrl = currentForm.photos[slot.id];
@@ -385,7 +382,7 @@ export const StudioStation: React.FC = () => {
               <div
                 key={slot.id}
                 onClick={() => setCaptureAngle(slot.id)}
-                className={`relative group rounded-lg overflow-hidden border transition-all h-28 bg-slate-50 flex flex-col justify-between cursor-pointer ${
+                className={`relative group rounded-lg overflow-hidden border transition-all h-24 sm:h-26 bg-slate-50 flex flex-col justify-between cursor-pointer ${
                   isSelected 
                     ? 'border-indigo-500 ring-2 ring-indigo-500/20' 
                     : photoUrl 
@@ -455,7 +452,7 @@ export const StudioStation: React.FC = () => {
                 ) : (
                   /* Empty Slot */
                   <div className="w-full h-full p-2 flex flex-col items-center justify-center text-center hover:bg-indigo-50/30 transition-colors">
-                    <div className="w-6 h-6 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-400 group-hover:text-indigo-600 group-hover:bg-indigo-50 transition-colors mb-1">
+                    <div className="w-5 h-5 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-400 group-hover:text-indigo-600 group-hover:bg-indigo-50 transition-colors mb-0.5">
                       <Camera className="w-3 h-3" />
                     </div>
                     <div className="text-[10px] font-semibold text-slate-700">
@@ -471,7 +468,7 @@ export const StudioStation: React.FC = () => {
                         e.stopPropagation();
                         fileInputRefs.current[slot.id]?.click();
                       }}
-                      className="mt-1 text-[9px] text-indigo-600 hover:text-indigo-800 font-medium underline flex items-center gap-0.5"
+                      className="mt-0.5 text-[9px] text-indigo-600 hover:text-indigo-800 font-medium underline flex items-center gap-0.5"
                     >
                       <Upload className="w-2.5 h-2.5" />
                       Subir
